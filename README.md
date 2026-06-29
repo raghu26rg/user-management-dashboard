@@ -114,14 +114,32 @@ git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
 git push -u origin main
 ```
 
-### Step 2 — Deploy on Render
+### Step 2 — Deploy on Render (manual, free — no Blueprint)
 
-1. Go to [render.com](https://render.com) and sign up (free)
-2. Click **New +** → **Blueprint**
-3. Connect your GitHub repo
-4. Render reads `render.yaml` and deploys automatically
-5. Wait ~3–5 minutes for the build to finish
-6. Open your live URL (e.g. `https://user-management-dashboard.onrender.com`)
+1. Go to [render.com](https://render.com) → **New +** → **Web Service**
+2. Connect repo: `raghu26rg/user-management-dashboard`
+3. **Instance Type:** Free
+4. **Build Command:**
+
+```
+npm install --include=dev && npm install --prefix server --include=dev && npm run build:render
+```
+
+5. **Start Command:**
+
+```
+npm run start
+```
+
+6. **Environment variables:**
+
+| Key | Value |
+|-----|--------|
+| `NODE_ENV` | `production` |
+| `DATABASE_URL` | `file:./dev.db` |
+| `PORT` | `10000` |
+
+7. Click **Create Web Service** and wait for the build
 
 ### Step 3 — Submit
 
