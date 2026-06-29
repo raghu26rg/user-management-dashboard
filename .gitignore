@@ -19,6 +19,7 @@ server/prisma/dev.db-journal
 # Environment
 .env
 server/.env
+.env.local
 
 # Editor directories and files
 .vscode/*
